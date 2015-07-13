@@ -1,3 +1,2 @@
-.rspec
-brainstorm.md
-UserStories.md
+.DS_Store
+Gemfile.lock

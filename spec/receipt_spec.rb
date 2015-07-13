@@ -1,10 +1,11 @@
 require 'receipt'
+require 'spec_helper'
 
 describe Receipt do
   let(:receipt){Receipt.new}
   let(:till){Till.new}
   let(:order){double :order, :customer_name => "Zeeshan", :customer_order_type => "Eat in"}
-  
+
   context "Can access shop information from till system" do
     it "Shop name" do
       expect(receipt.shop_name_from(till)).to eq("The Coffee Connection")

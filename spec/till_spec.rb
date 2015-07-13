@@ -1,8 +1,9 @@
 require 'till'
+require 'spec_helper'
 
 describe Till do
   let(:till){Till.new}
-  
+
   it "can parse json files into an array object" do
     expect(till.parsed_json.is_a?(Array)).to be true
   end
