@@ -1,6 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'json'
-gem 'rspec', group: :test
-gem 'codeclimate-test-reporter', group: :test, require: nil
-gem 'rubocop', group: :development,  require: false
+group :production do
+  gem 'json'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'codeclimate-test-reporter', require: nil
+end
+
+group :development do
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec'
+end

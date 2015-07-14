@@ -13,7 +13,7 @@ This is what a sample receipt looks like:
 
 ## Version 1
 - [ ] Receipt must calculate and show correct amount of tax
-- [ ] Receipt must show correct line totals
+- [x] Receipt must show correct line totals
 - [ ] Receipt must show correct total
 
 ## Version 2

@@ -2,34 +2,48 @@ require 'json'
 
 class Till
 
-  attr_reader :shop_name, :shop_address, :shop_phone_number, :menu
+  attr_reader :order, :shop_menu
 
   def initialize
+    @order = []
+    @shop_menu = nil
+    self.parse_json
   end
 
-  def parsed_json
+  def parse_json
     file = File.read('./hipstercoffee.json')
-    data_hash = JSON.parse(file)
+    @shop_menu = JSON.parse(file)
   end
 
   def shop_name
-    parsed_json[0]['shopName']
+    @shop_menu[0]['shopName']
   end
 
   def shop_phone_number
-    parsed_json[0]['phone']
+    @shop_menu[0]['phone']
   end
 
   def shop_address
-    parsed_json[0]['address']
+    @shop_menu[0]['address']
   end
 
   def menu
-    parsed_json[0]['prices']
+    @shop_menu[0]['prices']
   end
 
   def dish(dishName)
-    parsed_json[0]['prices'][0][dishName]
+    @shop_menu[0]['prices'][0][dishName]
+  end
+
+  def add(item, quantity)
+    price = self.dish(item)
+    line_item = [{ item => price }, quantity]
+    @order << line_item
+  end
+
+  def line_total(item, line_number)
+    index = line_number - 1
+    @order[index][0][item] * @order[index][1]
   end
 
 end
